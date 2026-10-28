@@ -1,0 +1,11 @@
+[package]
+name = "sigmaos-firmware"
+version = "0.1.0"
+edition = "2021"
+authors = ["SigmaOS Contributors"]
+description = "SigmaOS firmware component"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "sigmaos_firmware"
+path = "src/lib.rs"
