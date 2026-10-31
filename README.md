@@ -1,8 +1,16 @@
-# SigmaOS-firmware
+# SigmaOS firmware
 
-This repository is a SigmaOS component checkout. Its implementation scope and integration status are tracked in the central SigmaOS component registry.
+This crate currently contains an empty `no_std` library and a basic arithmetic
+test. It does not read, update, or configure system firmware; the test does not
+exercise firmware behavior.
 
-## Development
+## Build
 
-Review the repository history and existing source-level checks before changing behavior. Keep changes focused, document user-visible workflows, and update the central registry only when implementation evidence supports a status change.
+```sh
+cargo check --lib
+```
+
+## License
+
+See [`Cargo.toml`](Cargo.toml).
 
