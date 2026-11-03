@@ -1,14 +1,12 @@
-//! SigmaOS firmware component
-//!
-//! This component provides firmware functionality for SigmaOS.
+use anyhow::Result;
+use serde::Serialize;
 
-#![no_std]
+#[derive(Debug, Clone, Serialize)]
+pub struct Config { pub enabled: bool }
+impl Default for Config { fn default() -> Self { Self { enabled: true } } }
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
+pub struct firmware { config: Config }
+impl firmware {
+    pub fn new(config: Config) -> Self { Self { config } }
+    pub fn initialize(&mut self) -> Result<()> { Ok(()) }
 }
