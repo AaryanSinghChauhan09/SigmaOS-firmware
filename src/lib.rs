@@ -1,12 +1,17 @@
-use anyhow::Result;
-use serde::Serialize;
+//! SigmaOS-firmware — firmware model.
+//!
+//! Models firmware interfaces: UEFI, BIOS, firmware volumes,
+//! TPM (Trusted Platform Module), and secure boot state.
+//! Deterministic and std-only (no actual hardware access).
 
-#[derive(Debug, Clone, Serialize)]
-pub struct Config { pub enabled: bool }
-impl Default for Config { fn default() -> Self { Self { enabled: true } } }
+pub mod uefi;
+pub mod bios;
+pub mod volume;
+pub mod tpm;
+pub mod secureboot;
 
-pub struct firmware { config: Config }
-impl firmware {
-    pub fn new(config: Config) -> Self { Self { config } }
-    pub fn initialize(&mut self) -> Result<()> { Ok(()) }
-}
+pub use uefi::{UefiTable, UefiProtocol};
+pub use bios::{BiosRegion, BiosChecksum};
+pub use volume::{FirmwareVolume, FvBlock};
+pub use tpm::{TpmVersion, TpmPcr, TpmState};
+pub use secureboot::{SecureBootState, DbEntry};
